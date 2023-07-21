@@ -1,0 +1,24 @@
+{
+  "name": "placement-cell",
+  "version": "1.0.0",
+  "description": "This is an express app for an educatonal institute where in they can keep record of scheduled interviews of a student and also track their placements, students can also download their reports from their login portal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nain333/placement-cell.git"
+  },
+  "author": "@nain333",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nain333/placement-cell/issues"
+  },
+  "homepage": "https://github.com/nain333/placement-cell#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
