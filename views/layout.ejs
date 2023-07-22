@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/layout.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <header class="layout-header">
+        <%-include('_header'); %>
+    </header>
+    <main class="layout-main">
+
+        <%-body%>
+    </main>
+
+    
+</body>
+<%-include('_footer');%>
+<%- script  %>
+
+</html>
