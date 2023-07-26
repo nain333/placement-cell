@@ -35,6 +35,7 @@ module.exports.createEmployee=async function(req,res){
         if(req.body.password==req.body.confirm_password){
         Employee.create({
             name:req.body.name,
+            email:req.body.email, 
             password:req.body.password,
             
         })
@@ -50,6 +51,7 @@ module.exports.createEmployee=async function(req,res){
 }
 // Redirect a successful sign-in to dashboard
 module.exports.createSession= function(req,res){
+    console.log('inside createSession')
     res.redirect('/employee/dashboard')
 }
 // Render dashboard page
