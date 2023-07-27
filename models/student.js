@@ -10,7 +10,7 @@ const StudentSchema=new mongoose.Schema({
         unique:true
     },
     batch:{
-        type:Number,
+        type:String,
         required:true
     },
     college:{
@@ -21,7 +21,7 @@ const StudentSchema=new mongoose.Schema({
         type:String,
         //  The enum validator is an array that will check if the value given is an item in the array.
         //  If the value is not in the array, Mongoose will throw a ValidationError when you try to save() student 
-        enum:['Placed',['Not Placed']],
+        enum:['Placed','Not Placed'],
         default:'Not Placed'
     },
     scores:{

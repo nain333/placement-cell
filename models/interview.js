@@ -4,12 +4,14 @@ const interviewSchema = new mongoose.Schema({
     company:{
         type:String,
         required:true,
+        
 
     },
     date_of_visit:{
-        Type:Date,
-        required:true
-    }
+        type:Date,
+        required:true,
+        
+    },
 
 
 },{

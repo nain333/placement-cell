@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const resultSchema = new mongoose.Schema({
-    student:{
-        type:mongoose.Schema.types.ObjectId,
-        ref:'User'
-    },
+    student:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Student'
+    }],
     result:{
         type:String,
         enum:['Pass','Fail','On Hold',"Didn't Attempt"],

@@ -35,20 +35,7 @@ passport.serializeUser((employee,done)=>{
     return done(null,employee.id)
 
 })
-// desirealize Emloyee
-// passport.deserializeUser(async (id, done) => {
-//     try {
-//         const emp = await Employee.findById(id);
-//         if (emp) {
-//             return done(null, emp);
-//         } else {
-//             return done(null, false);
-//         }
-//     } catch (error) {
-//         console.log('Error in deserializing Employee:', error);
-//         return done(error);
-//     }
-// });
+
 passport.deserializeUser(async (id, done) => {
     try {
         const employee = await Employee.findById(id);
@@ -77,7 +64,7 @@ passport.checkAuthentication=(req,res,next)=>{
 
 passport.setAuthenticatedUser = (req, res, next) => {
     if (req.isAuthenticated()) {
-        res.locals.employee = req.user; // Change 'req.user' to 'req.employee'
+        res.locals.employee= req.user; 
         console.log('employee in setAuthenticated User:', req.user)
         console.log('Set authenticated User');
         console.log(res.locals)

@@ -54,9 +54,4 @@ module.exports.createSession= function(req,res){
     console.log('inside createSession')
     res.redirect('/employee/dashboard')
 }
-// Render dashboard page
-module.exports.dashboard=function(req,res){
-    res.render('dashboard',{
-        title:'Dashboard | Placement Cell'
-    })
-}
+// destroySessionCookie and log the employee out
