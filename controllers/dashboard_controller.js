@@ -24,29 +24,44 @@ module.exports.createStudent = async function(req, res){
     if(student){
         console.log('Student already exists!');
         return res.redirect('back');
-    }
-    const data = req.body;
-    Student.create({
-        email: data.email,
-        name: data.name,
-        batch: data.batch,
-        college: data.college,
-        scores: {
-            dsa: data.dsa,
-            webd: data.webd,
-            react: data.react
-        }
+     }
+     const data = req.body;
+    // Student.create({
+    //     email: data.email,
+    //     name: data.name,
+    //     batch: data.batch,
+    //     college: data.college,
+    //     scores: {
+    //         dsa: data.dsa,
+    //         webd: data.webd,
+    //         react: data.react
+    //     }
 
-    }, function(err, student){
-        if(err){
-            console.log(`Error in creating student: ${err}`);
+    // }, function(err, student){
+    //     if(err){
+    //         console.log(`Error in creating student: ${err}`);
+    //     }
+    //     return res.redirect('back');
+    // })
+   const newStudent = await Student.create(
+    {
+            email: data.email,
+            name: data.name,
+            batch: data.batch,
+            college: data.college,
+            scores: {
+                dsa: data.dsa,
+                webd: data.webd,
+                react: data.react
+            }
         }
-        return res.redirect('back');
-    })
+   )
+   res.redirect('back')
 }
 
 // Create an Interview
 module.exports.createInterview = async function(req, res){
+    console.log('inside create Interview')
     console.log(req.body);
     const formData = {
         company: req.body.company.toUpperCase(),
@@ -58,16 +73,9 @@ module.exports.createInterview = async function(req, res){
         console.log(`Interview is already scheduled for ${req.body.company} on ${req.body.date_of_visit}!`);
         return res.redirect('back');
     }
-    Interview.create(formData, function(err, interview){
-        if(err){
-            console.log(`Error in creating an interview: ${err}`);
-            return res.redirect('back');
-        }
-        Result.create({interview: interview}, function(err, result){
-            if(err){
-                console.log(`Error in creating a result while creating an interview: ${err}`);
-            }
-        })
-        return res.redirect('back');
-    })
+ 
+    const newInterview=await Interview.create(formData)
+    const newResult=await Result.create({interview:newInterview})
+    return res.redirect('back')
+
 }

@@ -21,6 +21,7 @@ app.use(expressLayouts)
 app.set('layout extractStyles',true)
 app.set('layout extractScripts',true)
 // set up folder for the static files
+
 app.use(cookieParser())
 // set-up the express-session
 // app.use(session({

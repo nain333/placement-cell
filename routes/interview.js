@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const interviewController = require('../controllers/interview-controller');
+const interviewController = require('../controllers/interview_controller');
 const passport = require('passport');
 
 router.get('/:id', passport.checkAuthentication, interviewController.modifyInterview);
