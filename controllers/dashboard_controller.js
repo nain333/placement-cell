@@ -4,15 +4,17 @@ const Result = require('../models/result');
 
 // Render dashboard page
 module.exports.dashboard = async function(req, res){
+    console.log('inside the dashboard controller')
     const students = await Student.find({});
     const interviews = await Interview.find({});
     interviews.forEach(interview => {
         interview.company = interview.company.charAt(0) + interview.company.slice(1).toLowerCase();
         interview.date_of_visit = interview.date_of_visit.toLocaleDateString();
     })
-    return res.render('dashboard', {
-        students: students,
-        interviews: interviewsrs
+    return res.render('dashboard',{
+        students:students,
+        interviews:interviews,
+        title:'dashboard'
     });
 }
 

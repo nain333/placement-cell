@@ -52,6 +52,16 @@ module.exports.createEmployee=async function(req,res){
 // Redirect a successful sign-in to dashboard
 module.exports.createSession= function(req,res){
     console.log('inside createSession')
-    res.redirect('/employee/dashboard')
+    return res.redirect('/employee/dashboard/')
 }
 // destroySessionCookie and log the employee out
+
+module.exports.destroySession = function(req, res){
+    req.logout(function(err){
+        if(err){
+            console.log(`Error is logging out: ${err}`);
+            return res.redirect('back');
+        }
+    });
+    res.redirect('/employee/sign-in');
+}

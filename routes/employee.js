@@ -1,14 +1,18 @@
-const express = require('express')
-const passport =require('passport')
-const router = express.Router()
-const employeeController = require('../controllers/employeeController')
-router.get('/sign-up',employeeController.signUp)
-router.get('/sign-in',employeeController.signIn)
-router.use('/dashboard',require('./dashboard'))
-router.post('/create',employeeController.createEmployee)
-router.post('/create-session',(req,res,next)=>{
-    console.log("request body inside the routes: ",req.body)
-    next()
-},passport.authenticate('local'),employeeController.createSession)
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
 
-module.exports=router
+const employeesController = require('../controllers/employeeController');
+
+router.get('/sign-in', employeesController.signIn);
+router.get('/sign-up', employeesController.signUp);
+router.post('/signup/create', employeesController.createEmployee);
+router.post('/create-session', passport.authenticate(
+    'local',
+    {failureRedirect: '/employee/sign-in'}
+), employeesController.createSession);
+router.get('/logout', employeesController.destroySession);
+
+router.use('/dashboard', require('./dashboard'));
+
+module.exports = router;
